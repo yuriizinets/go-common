@@ -210,6 +210,14 @@ var template = `
 
 Created for using in templates.  
 
+Template functions:  
+
+- `html`
+- `htmlattr`
+- `url`
+- `css`
+- `js`
+
 Examples:
 
 ```go
@@ -229,6 +237,14 @@ var template = `
 ## Other
 
 Uncategorized functions. Check sources or examples for details.  
+
+Functions:  
+
+- `Range`
+
+Template functions:
+
+- `rng`
 
 Examples:
 
