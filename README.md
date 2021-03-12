@@ -2,6 +2,7 @@
 # GO Common
 
 Common and missing Go things/quirks/features, like operations with slices, ranges, data transformations and so on.  
+Check https://pkg.go.dev/github.com/yuriizinets/go-common for detailed docs.  
 
 ## Table of Contents
 
@@ -13,6 +14,8 @@ Common and missing Go things/quirks/features, like operations with slices, range
   - [Dates](#dates)
   - [Escapes](#escapes)
   - [Other](#other)
+
+
 
 ## Import
 
