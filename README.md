@@ -3,13 +3,16 @@
 
 Common and missing Go things/quirks/features, like operations with slices, ranges, data transformations and so on.  
 
-## Features map
+## Table of Contents
 
-- [Operations](Operations)
-- [Transforms](Transforms)
-- [Dates](Dates)
-- [Escapes](Escapes)
-- [Other](Other)
+- [GO Common](#go-common)
+  - [Table of Contents](#table-of-contents)
+  - [Import](#import)
+  - [Operations](#operations)
+  - [Transforms](#transforms)
+  - [Dates](#dates)
+  - [Escapes](#escapes)
+  - [Other](#other)
 
 ## Import
 
