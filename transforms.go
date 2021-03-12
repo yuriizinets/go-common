@@ -7,7 +7,7 @@ import (
 
 // JSONDumps is a helper to create json string from Go variable.
 // Throws panic on error
-func JSONDumps(val map[string]interface{}) string {
+func JSONDumps(val interface{}) string {
 	databytes, err := json.Marshal(val)
 	if err != nil {
 		panic(err)

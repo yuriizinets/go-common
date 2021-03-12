@@ -8,6 +8,7 @@ Common and missing Go things/quirks/features, like operations with slices, range
 - [Operations](Operations)
 - [Transforms](Transforms)
 - [Dates](Dates)
+- [Escapes](Escapes)
 - [Other](Other)
 
 ## Import
@@ -111,7 +112,7 @@ funcmap := template.FuncMap{}
 common.TFMAttachTransforms(funcmap)
 // And use them in the template like here
 var template = `
- {{ variable | jsondumps }}
+ {{ .YourData | jsondumps }}
  {{ (jsonloadsmap "filename.json") | jsondumps }}
 `
 ```
@@ -138,6 +139,26 @@ common.TFMAttachDates(funcmap)
 var template = `
  {{ currentyear 0 }}-{{ currentmonth 0 }}-{{ currentday 0 }}
  {{ currentdate 0 "" }}
+`
+```
+
+## Escapes
+
+Created for using in templates.  
+
+Examples:
+
+```go
+// First, attach escape funcs to the funcmap
+funcmap := template.FuncMap{}
+common.TFMAttachEscapes(funcmap)
+// And use them in the template like here
+var template = `
+ {{ .URL | url }}
+ {{ .CustomJavascript | js }}
+ {{ .CustomCSS | css }}
+ {{ .InjectedHTML | html }}
+ {{ .InjectedHTMLAttribute | htmlattr }}
 `
 ```
 

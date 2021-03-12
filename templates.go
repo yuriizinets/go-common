@@ -33,7 +33,16 @@ func TFMAttachDates(t *template.FuncMap) {
 	(*t)["currentdate"] = CurrentDateStr
 }
 
-// TFMAttachOther is a function to apply minor functions subset to the provided funcmap
+// TFMAttachOther is a function to apply minor functions to the provided funcmap
 func TFMAttachOther(t *template.FuncMap) {
 	(*t)["rng"] = Range
+}
+
+// TFMAttachEscapes is a function to apply escape functions to the provided funcmap
+func TFMAttachEscapes(t *template.FuncMap) {
+	(*t)["html"] = func(src string) template.HTML { return template.HTML(src) }
+	(*t)["htmlattr"] = func(src string) template.HTMLAttr { return template.HTMLAttr(src) }
+	(*t)["js"] = func(src string) template.JS { return template.JS(src) }
+	(*t)["css"] = func(src string) template.CSS { return template.CSS(src) }
+	(*t)["url"] = func(src string) template.URL { return template.URL(src) }
 }
