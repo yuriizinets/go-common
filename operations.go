@@ -221,3 +221,29 @@ func Max(vals ...interface{}) interface{} {
 		panic("Type is not supported")
 	}
 }
+
+// Avg is a function to find average value from the list. Always use the same type for all parameters! Examples:
+// Avg(3, 5, 2, 5) 3
+// Avg(3.0, 5.0, 2.0, 5.0) 3.75
+// Avg("Fooo", "Bar") 3.5 (float64, by length)
+func Avg(vals ...interface{}) interface{} {
+	switch vals[0].(type) {
+	case int:
+		sum := Sum(vals...).(int)
+		return sum / len(vals)
+	case float32:
+		sum := Sum(vals...).(float32)
+		return sum / float32(len(vals))
+	case float64:
+		sum := Sum(vals...).(float64)
+		return sum / float64(len(vals))
+	case string:
+		lngs := []interface{}{}
+		for _, val := range vals {
+			lngs = append(lngs, float64(len(val.(string))))
+		}
+		return Avg(lngs...)
+	default:
+		panic("Type is not supported")
+	}
+}

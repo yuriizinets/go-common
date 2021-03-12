@@ -60,3 +60,48 @@ func TestDiv(t *testing.T) {
 		t.Error("Result of Div(float64(1.2), float64(2)) is incorrect")
 	}
 }
+
+func TestMin(t *testing.T) {
+	if Min(10, 2, 5).(int) != 2 {
+		t.Error("Result of Min(10, 2, 5) is incorrect")
+	}
+	if Min(float32(10.3), float32(2.3), float32(3.5)).(float32) != 2.3 {
+		t.Error("Result of Min(float32(10.3), float32(2.3), float32(3.5)) is incorrect")
+	}
+	if Min(float64(10.3), float64(2.3), float64(3.5)).(float64) != 2.3 {
+		t.Error("Result of Min(float64(10.3), float64(2.3), float64(3.5)) is incorrect")
+	}
+	if Min("Fooo", "Bar").(string) != "Bar" {
+		t.Error(`Result of Min("Fooo", "Bar") is incorrect`)
+	}
+}
+
+func TestMax(t *testing.T) {
+	if Max(10, 2, 5).(int) != 10 {
+		t.Error("Result of Max(10, 2, 5) is incorrect")
+	}
+	if Max(float32(10.3), float32(2.3), float32(3.5)).(float32) != 10.3 {
+		t.Error("Result of Max(float32(10.3), float32(2.3), float32(3.5)) is incorrect")
+	}
+	if Max(float64(10.3), float64(2.3), float64(3.5)).(float64) != 10.3 {
+		t.Error("Result of Max(float64(10.3), float64(2.3), float64(3.5)) is incorrect")
+	}
+	if Max("Bar", "Fooo").(string) != "Fooo" {
+		t.Error(`Result of Max("Fooo", "Bar") is incorrect`)
+	}
+}
+
+func TestAvg(t *testing.T) {
+	if Avg(3, 5, 2, 5).(int) != 3 {
+		t.Error("Result of Avg(10, 2, 5) is incorrect")
+	}
+	if Avg(float32(3.5), float32(3.3), float32(3.4)).(float32) != 3.4000003 { // Division specifics (?)
+		t.Error("Result of Avg(float32(3.5), float32(3.3), float32(3.4)) is incorrect")
+	}
+	if Avg(float64(3.5), float64(3.3), float64(3.4)).(float64) != 3.4 { // No division specifics (?)
+		t.Error("Result of Avg(float32(3.5), float32(3.3), float32(3.4)) is incorrect")
+	}
+	if Avg("Bar", "Fooo").(float64) != 3.5 {
+		t.Error(`Result of Avg("Fooo", "Bar") is incorrect`)
+	}
+}

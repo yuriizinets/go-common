@@ -88,6 +88,12 @@ var resmaxstr string
 resmax = Max(10, 5, 6).(int) // 10
 resmaxstr = Max("FooBar", "Foo") // FooBar. (by length)
 
+// Avg
+var resavgint int
+var resavgfloat float64
+resavgint = Avg(3, 5, 2, 5).(int) // 3, 'cause values are int
+resavgfloat = Avg(float64(3.5), float64(3.3), float64(3.4)).(float64) // 3.4
+
 
 // Using in templates
 
@@ -100,6 +106,9 @@ var template = `
  {{ sub 10 2 3 }}
  {{ mult 10 2 3 }}
  {{ div 10 2 }}
+ {{ min 3 2 10 }}
+ {{ max 3 2 10 }}
+ {{ avg 3.0 5.0 2.0 5.0 }}
 `
 ...
 ```

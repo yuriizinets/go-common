@@ -19,6 +19,7 @@ func TFMAttachOperations(t *template.FuncMap) {
 	(*t)["div"] = Div
 	(*t)["min"] = Min
 	(*t)["max"] = Max
+	(*t)["avg"] = Avg
 }
 
 // TFMAttachTransforms is a function to apply transform functions to the provided funcmap
