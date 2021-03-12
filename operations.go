@@ -135,3 +135,89 @@ func Div(vals ...interface{}) interface{} {
 		panic("Type is not supported")
 	}
 }
+
+// Min is a function to find minimal value from the list. Always use the same type for all parameters! Examples:
+// Min(3, 5, 2, 5) 2
+// Min(10.3, 2.3, 3.5) 2.3
+// Min("Fooo", "Bar") "Bar" (by length)
+func Min(vals ...interface{}) interface{} {
+	switch vals[0].(type) {
+	case int:
+		min := vals[0].(int)
+		for _, v := range vals {
+			if v.(int) < min {
+				min = v.(int)
+			}
+		}
+		return min
+	case float32:
+		min := vals[0].(float32)
+		for _, v := range vals {
+			if v.(float32) < min {
+				min = v.(float32)
+			}
+		}
+		return min
+	case float64:
+		min := vals[0].(float64)
+		for _, v := range vals {
+			if v.(float64) < min {
+				min = v.(float64)
+			}
+		}
+		return min
+	case string:
+		min := vals[0].(string)
+		for _, v := range vals {
+			if len(v.(string)) < len(min) {
+				min = v.(string)
+			}
+		}
+		return min
+	default:
+		panic("Type is not supported")
+	}
+}
+
+// Max is a function to find maximum value from the list. Always use the same type for all parameters! Examples:
+// Max(3, 5, 2, 5) 5
+// Max(10.3, 2.3, 3.5) 10.3
+// Max("Fooo", "Bar") "Fooo" (by length)
+func Max(vals ...interface{}) interface{} {
+	switch vals[0].(type) {
+	case int:
+		min := vals[0].(int)
+		for _, v := range vals {
+			if v.(int) > min {
+				min = v.(int)
+			}
+		}
+		return min
+	case float32:
+		min := vals[0].(float32)
+		for _, v := range vals {
+			if v.(float32) > min {
+				min = v.(float32)
+			}
+		}
+		return min
+	case float64:
+		min := vals[0].(float64)
+		for _, v := range vals {
+			if v.(float64) > min {
+				min = v.(float64)
+			}
+		}
+		return min
+	case string:
+		min := vals[0].(string)
+		for _, v := range vals {
+			if len(v.(string)) > len(min) {
+				min = v.(string)
+			}
+		}
+		return min
+	default:
+		panic("Type is not supported")
+	}
+}

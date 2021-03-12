@@ -25,7 +25,25 @@ import(
 
 ## Operations
 
-Most common operations, like `Sum`, `Sub`, `Div`, `Mult`. Mainly created for using inside of templates, where such basic things doesn't exist.  
+Most common operations. Mainly created for using inside of templates, where such basic things doesn't exist.
+
+Functions:  
+
+- `Sum`
+- `Sub`
+- `Div`
+- `Mult`
+- `Min`
+- `Max`
+
+Template functions:
+
+- `sum`
+- `sub`
+- `div`
+- `mult`
+- `min`
+- `max`
 
 Supported types: `int`,`float32`,`float64`,`string(partialy)`
 
@@ -55,6 +73,18 @@ resmultstr = Mult("Foo", 2) // FooFoo. Multiplies string, as in Python
 var resdiv int
 resdiv = Div(10, 2, 2).(int) // 2. Use floats for accurate results
 
+// Min
+var resmin int
+var resminstr string
+resmin = Min(10, 5, 6).(int) // 5
+resminstr = Min("FooBar", "Foo") // Foo. (by length)
+
+// Max
+var resmax int
+var resmaxstr string
+resmax = Max(10, 5, 6).(int) // 10
+resmaxstr = Max("FooBar", "Foo") // FooBar. (by length)
+
 
 // Using in templates
 
@@ -74,6 +104,20 @@ var template = `
 ## Transforms
 
 Data transformations, like JSON to string and back.  
+
+Functions:
+
+- `JSONDump`
+- `JSONDumps`
+- `JSONLoad`
+- `JSONLoads`
+- `JSONLoadMap`
+- `JSONLoadsMap`
+
+Template functions:
+
+- `jsondumps`
+- `jsonloadsmap`
 
 Examples:
 
@@ -123,6 +167,20 @@ var template = `
 ## Dates
 
 Most common dates operations, like `CurrentYear`, `CurrentDay`, etc. Mainly created for using inside of templates, where such basic things doesn't exist.  
+
+Functions:
+
+- `CurrentYear`
+- `CurrentMonth`
+- `CurrentDay`
+- `CurrentDateStr`
+
+Template functions:
+
+- `currentyear`
+- `currentmonth`
+- `currentday`
+- `currentdate`
 
 Examples:
 
