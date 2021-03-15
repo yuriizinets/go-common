@@ -1,6 +1,8 @@
 package common
 
-import "testing"
+import (
+	"testing"
+)
 
 func TestMin(t *testing.T) {
 	if Min(10, 2, 5).(int) != 2 {
@@ -56,5 +58,14 @@ func TestIn(t *testing.T) {
 	}
 	if In("foo", []string{"foo", "bar"}) == false {
 		t.Error(`Result of In("foo", []string{"foo", "bar"}) is incorrect`)
+	}
+}
+
+func TestRemove(t *testing.T) {
+	if len(Remove(3, []int{4, 3, 5}).([]int)) != 2 {
+		t.Error("Result of Remove(3, []int{4, 3, 5}) is incorrect")
+	}
+	if len(Remove("foo", []string{"foo", "bar"}).([]string)) != 1 {
+		t.Error(`Result of Remove("foo", []string{"foo", "bar"}) is incorrect`)
 	}
 }

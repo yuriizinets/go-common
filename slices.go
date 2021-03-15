@@ -112,7 +112,7 @@ func Avg(vals ...interface{}) interface{} {
 	}
 }
 
-// In is a function to check value is in a list. Always use the same type for all parameters! Examples:
+// In is a function to check value is in the list. Always use the same type for all parameters! Examples:
 // In("foo", []string{"foo", "bar"}) true
 // In(3, []int{4, 5}) false
 func In(val interface{}, vals interface{}) bool {
@@ -149,6 +149,48 @@ func In(val interface{}, vals interface{}) bool {
 			}
 		}
 		return false
+	default:
+		panic("Type is not supported")
+	}
+}
+
+// Remove is a function to remove value from the list. Always use the same type for all parameters! Examples:
+// Remove("foo", []string{"foo", "bar"}) []string{"bar"}
+// Remove(3, []int{4, 3, 5}) []int{4, 5}
+func Remove(val interface{}, vals interface{}) interface{} {
+	switch val.(type) {
+	case int:
+		newslice := []int{}
+		for _, v := range vals.([]int) {
+			if val.(int) != v {
+				newslice = append(newslice, v)
+			}
+		}
+		return newslice
+	case float32:
+		newslice := []float32{}
+		for _, v := range vals.([]float32) {
+			if val.(float32) != v {
+				newslice = append(newslice, v)
+			}
+		}
+		return newslice
+	case float64:
+		newslice := []float64{}
+		for _, v := range vals.([]float64) {
+			if val.(float64) != v {
+				newslice = append(newslice, v)
+			}
+		}
+		return newslice
+	case string:
+		newslice := []string{}
+		for _, v := range vals.([]string) {
+			if val.(string) != v {
+				newslice = append(newslice, v)
+			}
+		}
+		return newslice
 	default:
 		panic("Type is not supported")
 	}

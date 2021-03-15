@@ -24,6 +24,7 @@ func TFMAttachSlices(t *template.FuncMap) {
 	(*t)["max"] = Max
 	(*t)["avg"] = Avg
 	(*t)["in"] = In
+	(*t)["remove"] = Remove
 }
 
 // TFMAttachTransforms is a function to apply transform functions to the provided funcmap

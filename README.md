@@ -97,6 +97,7 @@ Functions:
 - `Max`
 - `Avg`
 - `In`
+- `Remove`
 
 Template functions:
 
@@ -104,6 +105,7 @@ Template functions:
 - `max`
 - `avg`
 - `in`
+- `remove`
 
 Supported types: `int`,`float32`,`float64`,`string`  
 
@@ -133,6 +135,10 @@ resavgfloat = Avg(float64(3.5), float64(3.3), float64(3.4)).(float64) // 3.4
 var resin bool
 resin = In("foo", []string{"bar", "foo", "baz"}) // true
 
+// Remove
+var resremove []int
+resremove = Remove(3, []int{4, 3, 5}) // []int{4, 5}
+
 
 // Using in templates
 
@@ -145,6 +151,7 @@ var template = `
  {{ max 3 2 10 }}
  {{ avg 3.0 5.0 2.0 5.0 }}
  {{ in "test" .Slice }}
+ {{ remove "test" .Slice }}
 `
 ...
 ```
