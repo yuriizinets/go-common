@@ -75,3 +75,39 @@ func JSONLoadMap(filepath string) map[string]interface{} {
 	}
 	return target
 }
+
+// SliceInterfaceToString is a helper to cast []interface{} to []int
+func CastISliceToInt(val []interface{}) []int {
+	_val := []int{}
+	for _, v := range val {
+		_val = append(_val, v.(int))
+	}
+	return _val
+}
+
+// SliceInterfaceToString is a helper to cast []interface{} to []float32
+func CastISliceToFloat32(val []interface{}) []float32 {
+	_val := []float32{}
+	for _, v := range val {
+		_val = append(_val, v.(float32))
+	}
+	return _val
+}
+
+// SliceInterfaceToString is a helper to cast []interface{} to []float32
+func CastISliceToFloat64(val []interface{}) []float64 {
+	_val := []float64{}
+	for _, v := range val {
+		_val = append(_val, v.(float64))
+	}
+	return _val
+}
+
+// SliceInterfaceToString is a helper to cast []interface{} to []sring
+func CastISliceToString(val []interface{}) []string {
+	_val := []string{}
+	for _, v := range val {
+		_val = append(_val, v.(string))
+	}
+	return _val
+}

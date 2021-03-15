@@ -168,6 +168,10 @@ Functions:
 - `JSONLoads`
 - `JSONLoadMap`
 - `JSONLoadsMap`
+- `CastISliceToInt`
+- `CastISliceToFloat32`
+- `CastISliceToFloat64`
+- `CastISliceToString`
 
 Template functions:
 
@@ -206,6 +210,9 @@ rrdata = common.JSONLoadsMap(rawdata) // map[string]interface{}
 common.JSONLoad("filename.json", &rdata)
 // Load from file into map, without declaration
 rrdata = common.JSONLoadMap("filename.json") // map[string]interface{}
+// Type casting
+common.CastISliceToInt([]interface{}{1, 2, 3}) // []int{1, 2, 3}
+common.CastISliceToFloat32([]interface{}{1.4, 2.6, 3.1}) // []int{1.4, 2.6, 3.1}
 
 // Using in templates
 
