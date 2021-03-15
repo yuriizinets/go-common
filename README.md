@@ -10,12 +10,11 @@ Check https://pkg.go.dev/github.com/yuriizinets/go-common for detailed docs.
   - [Table of Contents](#table-of-contents)
   - [Import](#import)
   - [Operations](#operations)
+  - [Slices](#slices)
   - [Transforms](#transforms)
   - [Dates](#dates)
   - [Escapes](#escapes)
   - [Other](#other)
-
-
 
 ## Import
 
@@ -36,8 +35,6 @@ Functions:
 - `Sub`
 - `Div`
 - `Mult`
-- `Min`
-- `Max`
 
 Template functions:
 
@@ -45,8 +42,6 @@ Template functions:
 - `sub`
 - `div`
 - `mult`
-- `min`
-- `max`
 
 Supported types: `int`,`float32`,`float64`,`string(partialy)`
 
@@ -76,6 +71,42 @@ resmultstr = Mult("Foo", 2) // FooFoo. Multiplies string, as in Python
 var resdiv int
 resdiv = Div(10, 2, 2).(int) // 2. Use floats for accurate results
 
+
+// Using in templates
+
+// First, attach operations funcs to the funcmap
+funcmap := template.FuncMap{}
+common.TFMAttachOperations(funcmap)
+// And use them in the template like here
+var template = `
+ {{ sum 10 2 3 3 }}
+ {{ sub 10 2 3 }}
+ {{ mult 10 2 3 }}
+ {{ div 10 2 }}
+`
+...
+```
+
+## Slices
+
+Functions related to work with slices.  
+
+Functions:
+
+- `Min`
+- `Max`
+- `In`
+
+Template functions:
+
+- `min`
+- `max`
+- `in`
+
+Examples:
+
+```go
+
 // Min
 var resmin int
 var resminstr string
@@ -94,21 +125,22 @@ var resavgfloat float64
 resavgint = Avg(3, 5, 2, 5).(int) // 3, 'cause values are int
 resavgfloat = Avg(float64(3.5), float64(3.3), float64(3.4)).(float64) // 3.4
 
+// In
+var resin bool
+resin = In("foo", []string{"bar", "foo", "baz"}) // true
+
 
 // Using in templates
 
 // First, attach operations funcs to the funcmap
 funcmap := template.FuncMap{}
-common.TFMAttachOperations(funcmap)
+common.TFMAttachSlices(funcmap)
 // And use them in the template like here
 var template = `
- {{ sum 10 2 3 3 }}
- {{ sub 10 2 3 }}
- {{ mult 10 2 3 }}
- {{ div 10 2 }}
  {{ min 3 2 10 }}
  {{ max 3 2 10 }}
  {{ avg 3.0 5.0 2.0 5.0 }}
+ {{ in "test" .Slice }}
 `
 ...
 ```

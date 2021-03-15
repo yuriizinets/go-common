@@ -17,9 +17,13 @@ func TFMAttachOperations(t *template.FuncMap) {
 	(*t)["sub"] = Sub
 	(*t)["mult"] = Mult
 	(*t)["div"] = Div
+}
+
+func TFMAttachSlices(t *template.FuncMap) {
 	(*t)["min"] = Min
 	(*t)["max"] = Max
 	(*t)["avg"] = Avg
+	(*t)["in"] = In
 }
 
 // TFMAttachTransforms is a function to apply transform functions to the provided funcmap
