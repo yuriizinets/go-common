@@ -105,6 +105,8 @@ Template functions:
 - `avg`
 - `in`
 
+Supported types: `int`,`float32`,`float64`,`string`  
+
 Examples:
 
 ```go
