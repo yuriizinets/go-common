@@ -95,12 +95,14 @@ Functions:
 
 - `Min`
 - `Max`
+- `Avg`
 - `In`
 
 Template functions:
 
 - `min`
 - `max`
+- `avg`
 - `in`
 
 Examples:
