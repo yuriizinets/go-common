@@ -308,7 +308,7 @@ Template functions:
 Examples:
 
 ```go
-rng := Range(1, 5) // []int{1, 2, 3, 4}
+rng := Range(1, 5) // []int{1, 2, 3, 4, 5}
 
 // Using in templates
 
