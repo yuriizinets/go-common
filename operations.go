@@ -32,6 +32,30 @@ func Sum(vals ...interface{}) interface{} {
 			sum += val.(string)
 		}
 		return sum
+	case []int:
+		sum := int(0)
+		for _, val := range vals[0].([]int) {
+			sum += val
+		}
+		return sum
+	case []float32:
+		sum := float32(0)
+		for _, val := range vals[0].([]float32) {
+			sum += val
+		}
+		return sum
+	case []float64:
+		sum := float64(0)
+		for _, val := range vals[0].([]float64) {
+			sum += val
+		}
+		return sum
+	case []string:
+		sum := string("")
+		for _, val := range vals[0].([]string) {
+			sum += val
+		}
+		return sum
 	default:
 		panic("Type is not supported")
 	}
@@ -65,6 +89,34 @@ func Sub(vals ...interface{}) interface{} {
 		sub := string(vals[0].(string))
 		for _, val := range vals[1:] {
 			sub = strings.ReplaceAll(sub, val.(string), "")
+		}
+		return sub
+	case []int:
+		arr := vals[0].([]int)
+		sub := int(vals[0].(int))
+		for _, val := range arr[1:] {
+			sub -= val
+		}
+		return sub
+	case []float32:
+		arr := vals[0].([]float32)
+		sub := float32(vals[0].(float32))
+		for _, val := range arr[1:] {
+			sub -= val
+		}
+		return sub
+	case []float64:
+		arr := vals[0].([]float64)
+		sub := float64(vals[0].(float64))
+		for _, val := range arr[1:] {
+			sub -= val
+		}
+		return sub
+	case []string:
+		arr := vals[0].([]string)
+		sub := string(vals[0].(string))
+		for _, val := range arr[1:] {
+			sub = strings.ReplaceAll(sub, val, "")
 		}
 		return sub
 	default:
@@ -102,6 +154,24 @@ func Mult(vals ...interface{}) interface{} {
 			sum += vals[0].(string)
 		}
 		return sum
+	case []int:
+		sum := int(1)
+		for _, val := range vals[0].([]int) {
+			sum *= val
+		}
+		return sum
+	case []float32:
+		sum := float32(1)
+		for _, val := range vals[0].([]float32) {
+			sum *= val
+		}
+		return sum
+	case []float64:
+		sum := float64(1)
+		for _, val := range vals[0].([]float64) {
+			sum *= val
+		}
+		return sum
 	default:
 		panic("Type is not supported")
 	}
@@ -129,6 +199,27 @@ func Div(vals ...interface{}) interface{} {
 		div := float64(vals[0].(float64))
 		for _, val := range vals[1:] {
 			div /= val.(float64)
+		}
+		return div
+	case []int:
+		arr := vals[0].([]int)
+		div := arr[0]
+		for _, val := range arr[1:] {
+			div /= val
+		}
+		return div
+	case []float32:
+		arr := vals[0].([]float32)
+		div := arr[0]
+		for _, val := range arr[1:] {
+			div /= val
+		}
+		return div
+	case []float64:
+		arr := vals[0].([]float64)
+		div := arr[0]
+		for _, val := range arr[1:] {
+			div /= val
 		}
 		return div
 	default:

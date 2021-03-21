@@ -38,6 +38,42 @@ func Min(vals ...interface{}) interface{} {
 			}
 		}
 		return min
+	case []int:
+		arr := vals[0].([]int)
+		min := arr[0]
+		for _, v := range arr {
+			if v < min {
+				min = v
+			}
+		}
+		return min
+	case []float32:
+		arr := vals[0].([]float32)
+		min := arr[0]
+		for _, v := range arr {
+			if v < min {
+				min = v
+			}
+		}
+		return min
+	case []float64:
+		arr := vals[0].([]float64)
+		min := arr[0]
+		for _, v := range arr {
+			if v < min {
+				min = v
+			}
+		}
+		return min
+	case []string:
+		arr := vals[0].([]string)
+		min := vals[0].(string)
+		for _, v := range arr {
+			if len(v) < len(min) {
+				min = v
+			}
+		}
+		return min
 	default:
 		panic("Type is not supported")
 	}
@@ -81,6 +117,42 @@ func Max(vals ...interface{}) interface{} {
 			}
 		}
 		return min
+	case []int:
+		arr := vals[0].([]int)
+		min := arr[0]
+		for _, v := range arr {
+			if v > min {
+				min = v
+			}
+		}
+		return min
+	case []float32:
+		arr := vals[0].([]float32)
+		min := arr[0]
+		for _, v := range arr {
+			if v > min {
+				min = v
+			}
+		}
+		return min
+	case []float64:
+		arr := vals[0].([]float64)
+		min := arr[0]
+		for _, v := range arr {
+			if v > min {
+				min = v
+			}
+		}
+		return min
+	case []string:
+		arr := vals[0].([]string)
+		min := vals[0].(string)
+		for _, v := range arr {
+			if len(v) > len(min) {
+				min = v
+			}
+		}
+		return min
 	default:
 		panic("Type is not supported")
 	}
@@ -105,6 +177,22 @@ func Avg(vals ...interface{}) interface{} {
 		lngs := []interface{}{}
 		for _, val := range vals {
 			lngs = append(lngs, float64(len(val.(string))))
+		}
+		return Avg(lngs...)
+	case []int:
+		sum := Sum(vals[0]).(int)
+		return sum / len(vals[0].([]int))
+	case []float32:
+		sum := Sum(vals[0]).(float32)
+		return sum / float32(len(vals[0].([]float32)))
+	case []float64:
+		sum := Sum(vals[0]).(float64)
+		return sum / float64(len(vals[0].([]float64)))
+	case []string:
+		arr := vals[0].([]string)
+		lngs := []interface{}{}
+		for _, val := range arr {
+			lngs = append(lngs, float64(len(val)))
 		}
 		return Avg(lngs...)
 	default:

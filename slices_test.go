@@ -8,6 +8,9 @@ func TestMin(t *testing.T) {
 	if Min(10, 2, 5).(int) != 2 {
 		t.Error("Result of Min(10, 2, 5) is incorrect")
 	}
+	if Min([]int{10, 2, 5}).(int) != 2 {
+		t.Error("Result of Min([]int{10, 2, 5}) is incorrect")
+	}
 	if Min(float32(10.3), float32(2.3), float32(3.5)).(float32) != 2.3 {
 		t.Error("Result of Min(float32(10.3), float32(2.3), float32(3.5)) is incorrect")
 	}
