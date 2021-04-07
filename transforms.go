@@ -37,7 +37,7 @@ func JSONLoads(val string, target interface{}) {
 	}
 }
 
-// JSONDumps is a helper to create map[string]interface{} from string.
+// JSONLoadsMap is a helper to create map[string]interface{} from string.
 // Throws panic on error
 func JSONLoadsMap(val string) map[string]interface{} {
 	var target map[string]interface{}
@@ -48,7 +48,7 @@ func JSONLoadsMap(val string) map[string]interface{} {
 	return target
 }
 
-// JSONDumps is a helper to create map[string]interface{} from file content.
+// JSONLoad is a helper to create map[string]interface{} from file content.
 // Throws panic on error
 func JSONLoad(filepath string, target interface{}) {
 	databytes, err := ioutil.ReadFile(filepath)
@@ -61,7 +61,7 @@ func JSONLoad(filepath string, target interface{}) {
 	}
 }
 
-// JSONDumps is a helper to create map[string]interface{} from file content.
+// JSONLoadMap is a helper to create map[string]interface{} from file content.
 // Throws panic on error
 func JSONLoadMap(filepath string) map[string]interface{} {
 	databytes, err := ioutil.ReadFile(filepath)
@@ -76,7 +76,7 @@ func JSONLoadMap(filepath string) map[string]interface{} {
 	return target
 }
 
-// SliceInterfaceToString is a helper to cast []interface{} to []int
+// CastISliceToInt is a helper to cast []interface{} to []int
 func CastISliceToInt(val []interface{}) []int {
 	_val := []int{}
 	for _, v := range val {
@@ -85,7 +85,16 @@ func CastISliceToInt(val []interface{}) []int {
 	return _val
 }
 
-// SliceInterfaceToString is a helper to cast []interface{} to []float32
+// CastISliceToIntPointers is a helper to cast []interface{} to []*int
+func CastISliceToIntPointers(val []interface{}) []*int {
+	_val := []*int{}
+	for _, v := range val {
+		_val = append(_val, v.(*int))
+	}
+	return _val
+}
+
+// CastISliceToFloat32 is a helper to cast []interface{} to []float32
 func CastISliceToFloat32(val []interface{}) []float32 {
 	_val := []float32{}
 	for _, v := range val {
@@ -94,7 +103,16 @@ func CastISliceToFloat32(val []interface{}) []float32 {
 	return _val
 }
 
-// SliceInterfaceToString is a helper to cast []interface{} to []float32
+// CastISliceToFloat32Pointers is a helper to cast []interface{} to []*float32
+func CastISliceToFloat32Pointers(val []interface{}) []*float32 {
+	_val := []*float32{}
+	for _, v := range val {
+		_val = append(_val, v.(*float32))
+	}
+	return _val
+}
+
+// CastISliceToFloat64 is a helper to cast []interface{} to []float64
 func CastISliceToFloat64(val []interface{}) []float64 {
 	_val := []float64{}
 	for _, v := range val {
@@ -103,11 +121,29 @@ func CastISliceToFloat64(val []interface{}) []float64 {
 	return _val
 }
 
-// SliceInterfaceToString is a helper to cast []interface{} to []sring
+// CastISliceToFloat64Pointers is a helper to cast []interface{} to []*float64
+func CastISliceToFloat64Pointers(val []interface{}) []*float64 {
+	_val := []*float64{}
+	for _, v := range val {
+		_val = append(_val, v.(*float64))
+	}
+	return _val
+}
+
+// CastISliceToString is a helper to cast []interface{} to []string
 func CastISliceToString(val []interface{}) []string {
 	_val := []string{}
 	for _, v := range val {
 		_val = append(_val, v.(string))
+	}
+	return _val
+}
+
+// CastISliceToStringPointers is a helper to cast []interface{} to []*string
+func CastISliceToStringPointers(val []interface{}) []*string {
+	_val := []*string{}
+	for _, v := range val {
+		_val = append(_val, v.(*string))
 	}
 	return _val
 }
