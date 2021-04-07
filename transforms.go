@@ -89,7 +89,12 @@ func CastISliceToInt(val []interface{}) []int {
 func CastISliceToIntPointers(val []interface{}) []*int {
 	_val := []*int{}
 	for _, v := range val {
-		_val = append(_val, v.(*int))
+		if v == nil {
+			_val = append(_val, nil)
+		} else {
+			_v := v.(int)
+			_val = append(_val, &_v)
+		}
 	}
 	return _val
 }
@@ -107,7 +112,12 @@ func CastISliceToFloat32(val []interface{}) []float32 {
 func CastISliceToFloat32Pointers(val []interface{}) []*float32 {
 	_val := []*float32{}
 	for _, v := range val {
-		_val = append(_val, v.(*float32))
+		if v == nil {
+			_val = append(_val, nil)
+		} else {
+			_v := v.(float32)
+			_val = append(_val, &_v)
+		}
 	}
 	return _val
 }
@@ -125,7 +135,12 @@ func CastISliceToFloat64(val []interface{}) []float64 {
 func CastISliceToFloat64Pointers(val []interface{}) []*float64 {
 	_val := []*float64{}
 	for _, v := range val {
-		_val = append(_val, v.(*float64))
+		if v == nil {
+			_val = append(_val, nil)
+		} else {
+			_v := v.(float64)
+			_val = append(_val, &_v)
+		}
 	}
 	return _val
 }
@@ -143,7 +158,12 @@ func CastISliceToString(val []interface{}) []string {
 func CastISliceToStringPointers(val []interface{}) []*string {
 	_val := []*string{}
 	for _, v := range val {
-		_val = append(_val, v.(*string))
+		if v == nil {
+			_val = append(_val, nil)
+		} else {
+			_v := v.(string)
+			_val = append(_val, &_v)
+		}
 	}
 	return _val
 }
