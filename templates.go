@@ -2,6 +2,7 @@ package common
 
 import (
 	"html/template"
+	"os"
 )
 
 // TFMAttach is a function to apply all function subsets to the provided funcmap
@@ -44,6 +45,7 @@ func TFMAttachDates(t *template.FuncMap) {
 // TFMAttachOther is a function to apply minor functions to the provided funcmap
 func TFMAttachOther(t *template.FuncMap) {
 	(*t)["rng"] = Range
+	(*t)["env"] = os.Getenv
 }
 
 // TFMAttachEscapes is a function to apply escape functions to the provided funcmap
