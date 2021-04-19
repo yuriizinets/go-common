@@ -8,7 +8,10 @@ import (
 // TFMAttach is a function to apply all function subsets to the provided funcmap
 func TFMAttach(t *template.FuncMap) {
 	TFMAttachOperations(t)
+	TFMAttachSlices(t)
+	TFMAttachTransforms(t)
 	TFMAttachDates(t)
+	TFMAttachEscapes(t)
 	TFMAttachOther(t)
 }
 
@@ -42,12 +45,6 @@ func TFMAttachDates(t *template.FuncMap) {
 	(*t)["currentdate"] = CurrentDateStr
 }
 
-// TFMAttachOther is a function to apply minor functions to the provided funcmap
-func TFMAttachOther(t *template.FuncMap) {
-	(*t)["rng"] = Range
-	(*t)["env"] = os.Getenv
-}
-
 // TFMAttachEscapes is a function to apply escape functions to the provided funcmap
 func TFMAttachEscapes(t *template.FuncMap) {
 	(*t)["html"] = func(src string) template.HTML { return template.HTML(src) }
@@ -55,4 +52,10 @@ func TFMAttachEscapes(t *template.FuncMap) {
 	(*t)["js"] = func(src string) template.JS { return template.JS(src) }
 	(*t)["css"] = func(src string) template.CSS { return template.CSS(src) }
 	(*t)["url"] = func(src string) template.URL { return template.URL(src) }
+}
+
+// TFMAttachOther is a function to apply minor functions to the provided funcmap
+func TFMAttachOther(t *template.FuncMap) {
+	(*t)["rng"] = Range
+	(*t)["env"] = os.Getenv
 }
