@@ -72,3 +72,9 @@ func TestRemove(t *testing.T) {
 		t.Error(`Result of Remove("foo", []string{"foo", "bar"}) is incorrect`)
 	}
 }
+
+func TestDeduplicate(t *testing.T) {
+	if len(Deduplicate([]int{3, 4, 4, 5}).([]int)) != 3 {
+		t.Error("Result of Deduplicate([]int{3, 4, 4, 5}) is not correct")
+	}
+}

@@ -283,3 +283,53 @@ func Remove(val interface{}, vals interface{}) interface{} {
 		panic("Type is not supported")
 	}
 }
+
+// Deduplicate is a function to remove duplicates from the list. Always use the same type for all parameters! Examples:
+// Deduplicate([]string{"foo", "foo", "bar"}) []string{"foo", "bar"}
+// Deduplicate([]int{4, 3, 3, 5}) []int{4, 3, 5}
+func Deduplicate(vals interface{}) interface{} {
+	switch vals.(type) {
+	case []int:
+		keys := map[int]bool{}
+		list := []int{}
+		for _, v := range vals.([]int) {
+			if _, ok := keys[v]; !ok {
+				keys[v] = true
+				list = append(list, v)
+			}
+		}
+		return list
+	case []float32:
+		keys := map[float32]bool{}
+		list := []float32{}
+		for _, v := range vals.([]float32) {
+			if _, ok := keys[v]; !ok {
+				keys[v] = true
+				list = append(list, v)
+			}
+		}
+		return list
+	case []float64:
+		keys := map[float64]bool{}
+		list := []float64{}
+		for _, v := range vals.([]float64) {
+			if _, ok := keys[v]; !ok {
+				keys[v] = true
+				list = append(list, v)
+			}
+		}
+		return list
+	case []string:
+		keys := map[string]bool{}
+		list := []string{}
+		for _, v := range vals.([]string) {
+			if _, ok := keys[v]; !ok {
+				keys[v] = true
+				list = append(list, v)
+			}
+		}
+		return list
+	default:
+		panic("Type is not supported")
+	}
+}
