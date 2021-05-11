@@ -35,6 +35,7 @@ func TFMAttachSlices(t *template.FuncMap) {
 func TFMAttachTransforms(t *template.FuncMap) {
 	(*t)["jsonloadsmap"] = JSONLoadsMap
 	(*t)["jsondumps"] = JSONDumps
+	(*t)["structmap"] = StructMap
 }
 
 // TFMAttachDates is a function to apply dates functions to the provided funcmap

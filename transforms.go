@@ -76,6 +76,18 @@ func JSONLoadMap(filepath string) map[string]interface{} {
 	return target
 }
 
+// StructMap is a helper to transform struct to map (with json tags comply)
+// Throws panic on error
+func StructMap(val interface{}) map[string]interface{} {
+	var m map[string]interface{}
+	b, _ := json.Marshal(val)
+	err := json.Unmarshal(b, &m)
+	if err != nil {
+		panic(err)
+	}
+	return m
+}
+
 // CastISliceToInt is a helper to cast []interface{} to []int
 func CastISliceToInt(val []interface{}) []int {
 	_val := []int{}
