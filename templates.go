@@ -3,6 +3,7 @@ package common
 import (
 	"html/template"
 	"os"
+	"strings"
 )
 
 // TFMAttach is a function to apply all function subsets to the provided funcmap
@@ -29,6 +30,7 @@ func TFMAttachSlices(t *template.FuncMap) {
 	(*t)["avg"] = Avg
 	(*t)["in"] = In
 	(*t)["remove"] = Remove
+	(*t)["split"] = strings.Split
 }
 
 // TFMAttachTransforms is a function to apply transform functions to the provided funcmap
