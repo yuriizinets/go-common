@@ -211,7 +211,7 @@ func In(val interface{}, vals interface{}) bool {
 		if _, ok := vals.([]int); ok {
 			_vals = vals.([]int)
 		} else if _, ok := vals.([]*int); ok {
-			_vals = Unpoint(vals.([]*int)).([]int)
+			_vals = SUnpoint(vals.([]*int)).([]int)
 		}
 		for _, v := range _vals {
 			if val.(int) == v {
@@ -225,7 +225,7 @@ func In(val interface{}, vals interface{}) bool {
 		if _, ok := vals.([]float32); ok {
 			_vals = vals.([]float32)
 		} else if _, ok := vals.([]*float32); ok {
-			_vals = Unpoint(vals.([]*float32)).([]float32)
+			_vals = SUnpoint(vals.([]*float32)).([]float32)
 		}
 		for _, v := range _vals {
 			if val.(float32) == v {
@@ -239,7 +239,7 @@ func In(val interface{}, vals interface{}) bool {
 		if _, ok := vals.([]float64); ok {
 			_vals = vals.([]float64)
 		} else if _, ok := vals.([]*float64); ok {
-			_vals = Unpoint(vals.([]*float64)).([]float64)
+			_vals = SUnpoint(vals.([]*float64)).([]float64)
 		}
 		for _, v := range _vals {
 			if val.(float64) == v {
@@ -253,7 +253,7 @@ func In(val interface{}, vals interface{}) bool {
 		if _, ok := vals.([]string); ok {
 			_vals = vals.([]string)
 		} else if _, ok := vals.([]*string); ok {
-			_vals = Unpoint(vals.([]*string)).([]string)
+			_vals = SUnpoint(vals.([]*string)).([]string)
 		}
 		for _, v := range _vals {
 			if val.(string) == v {
@@ -358,9 +358,9 @@ func Deduplicate(vals interface{}) interface{} {
 	}
 }
 
-// Unpoint is a function to convert slice of pointers to normal slice
+// SUnpoint is a function to convert slice of pointers to normal slice
 // f.e. []*string -> []string
-func Unpoint(slice interface{}) interface{} {
+func SUnpoint(slice interface{}) interface{} {
 	switch slice := slice.(type) {
 	case []*int:
 		newslice := []int{}
