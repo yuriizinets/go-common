@@ -213,7 +213,9 @@ func In(val interface{}, vals interface{}) bool {
 		} else if _, ok := vals.([]*int); ok {
 			_vals = SUnpoint(vals.([]*int)).([]int)
 		} else if _, ok := vals.(*[]int); ok {
-			_vals = *vals.(*[]int)
+			if vals.(*[]int) != nil {
+				_vals = *vals.(*[]int)
+			}
 		}
 		for _, v := range _vals {
 			if val.(int) == v {
@@ -229,7 +231,9 @@ func In(val interface{}, vals interface{}) bool {
 		} else if _, ok := vals.([]*float32); ok {
 			_vals = SUnpoint(vals.([]*float32)).([]float32)
 		} else if _, ok := vals.(*[]float32); ok {
-			_vals = *vals.(*[]float32)
+			if vals.(*[]float32) != nil {
+				_vals = *vals.(*[]float32)
+			}
 		}
 		for _, v := range _vals {
 			if val.(float32) == v {
@@ -245,7 +249,9 @@ func In(val interface{}, vals interface{}) bool {
 		} else if _, ok := vals.([]*float64); ok {
 			_vals = SUnpoint(vals.([]*float64)).([]float64)
 		} else if _, ok := vals.(*[]float64); ok {
-			_vals = *vals.(*[]float64)
+			if vals.(*[]float64) != nil {
+				_vals = *vals.(*[]float64)
+			}
 		}
 		for _, v := range _vals {
 			if val.(float64) == v {
@@ -261,7 +267,9 @@ func In(val interface{}, vals interface{}) bool {
 		} else if _, ok := vals.([]*string); ok {
 			_vals = SUnpoint(vals.([]*string)).([]string)
 		} else if _, ok := vals.(*[]string); ok {
-			_vals = *vals.(*[]string)
+			if vals.(*[]string) != nil {
+				_vals = *vals.(*[]string)
+			}
 		}
 		for _, v := range _vals {
 			if val.(string) == v {
